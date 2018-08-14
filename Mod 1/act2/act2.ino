@@ -13,12 +13,15 @@
  * 
  * Written by nacosta-cl for LR
  */
+
+ //For example, a ESP8266 has 4KB of stack memory.
+#include <ArduinoJson.h>
 #include <ESP8266WiFi.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
 //Ajustar Adafruit_SSD1306.h a 64x48
-
+DynamicJsonBuffer jsonBuffer;
 Adafruit_SSD1306 display(99);
 
 const char* ssid     = "Qdeli";
@@ -65,38 +68,78 @@ void setup(){
   //Conexion a cliente
   WiFiClientSecure client;
   const int httpsPort = 443;  
-  const char* host = "catfact.ninja";
+  const char* host = "https://jsonplaceholder.typicode.com"; //"catfact.ninja";
   if (!client.connect(host,httpsPort)) {
     Serial.println("connection failed");
     return;
   }
-  Serial.print("Requesting URL: ");
-  
-  String url = "/fact";
-  
+  //Fabricamos la URL
+  Serial.print("URL: ");
+  String url = "/todos/1";  //"/fact";
   Serial.println(url);
-  
-  // This will send the request to the server
-  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
+  String request = String("GET ") + url + " HTTP/1.1\r\n" +
                "Host: " + host + "\r\n" + 
-               "Connection: close\r\n\r\n");
+               "Connection: close\r\n\r\n";
+  // Enviamos el request
+  client.print(request);
+  
   unsigned long timeout = millis();
+  
   while (client.available() == 0) {
     if (millis() - timeout > 5000) {
-      Serial.println(">>> Client Timeout !");
+      Serial.println("[!] Timeout");
       client.stop();
       return;
     }
   }
-  
+  /*if (strcmp(client.status, "HTTP/1.1 200 OK") != 0) {
+    Serial.print(F("Unexpected response: "));
+    Serial.println(status);
+    return;
+  }*/
+  Serial.println(client.status());
+  String ans; //Lineas
+  String json; //Respuesta final
   // Read all the lines of the reply from server and print them to Serial
+  timeout = millis() + 1000;
   while(client.available()){
-    String line = client.readStringUntil('\r');
-    Serial.print(line);
+    ans = client.readStringUntil('\r');
+    if(ans.indexOf('{')!=-1){
+      json = ans;
+      break;
+    }
+    if(timeout < millis()){
+      Serial.println("done");
+      break;
+    }
+    Serial.print(ans);
   }
+  client.stop();
+  Serial.println(json.indexOf('{'));
+  String response = json.substring(json.indexOf("{"));
+  //Serial.print("Respuesta: ");
+  //Serial.println(response);
+
+  Serial.println("Conexion cerrada");
+  JsonObject& root = jsonBuffer.parseObject(response);
+  if (!root.success()) {
+    Serial.println(F("JSON mal formateado"));
+  }
+  // Extract values
+  Serial.println(F("Respuesta:"));
+  Serial.println(root["fact"].as<char*>());
+  Serial.println(root["length"].as<char*>());
+  display.clearDisplay();
+  display.setCursor(0,0);
+  display.println(root["fact"].as<char*>());
+  display.display();
+  /*
+  Serial.println(root["time"].as<char*>());
+  Serial.println(root["data"][0].as<char*>());
+  Serial.println(root["data"][1].as<char*>());
+  */
+
   
-  Serial.println();
-  Serial.println("closing connection");
 }
 
 void loop(){
