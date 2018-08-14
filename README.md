@@ -1,15 +1,25 @@
 # tallerESP8266
 Codigo y material diseñado para el taller del ESP8266
 
+Distribuido bajo licencia GPLv3: Leer implicancias (Especialmente atribuir autoria y compartir todo el codigo fuente)
+
+Taller proyecto-céntrico diseñado a nivel introductorio-medio para alumnos de universidad y superior que ya hayan tenido exito con un taller en arduino
+
+El codigo esta hecho en ingles!
+
 Taller ESP - Topicos
+
 Proyecto principal: Sensor de temperatura IoT
 MOD 1 => Inicio - IOT - sockets
 	Incio
-	Que es el iot
+		Requiere arduino
+		Presentacion programa
+	Que es el IoT
 		Descripcion
 		Aparatos
 		Protocolos
 		why iot
+		Fabricantes involucrados con el IoT
 	ESP8266
 		Intro
 		capacidades
@@ -20,9 +30,10 @@ MOD 1 => Inicio - IOT - sockets
 		Costos
 		WeMos
 		ESP8285
-		EJ setup
+		SDK vs Arduino
 		OLED
 			EJ Dibuja en la OLED
+			Fallas comunes en l ESP
 	Wifi
 		Arquitectura del Wifi
 		Modelo de redes
