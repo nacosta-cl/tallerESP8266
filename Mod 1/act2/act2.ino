@@ -5,7 +5,7 @@
  * 
  * Write hello world on the OLED
  * Overview:
- * How to use wifi, scan networks, and connect to an API
+ * How to connect to a wifi, and connect to an API
  * 
  * Requires:
  * ESP8266
@@ -28,6 +28,7 @@ const char* ssid     = "Qdeli";
 const char* password = "lr134679";
 void setup(){
   Serial.begin(115200);
+  Serial.println("");
   Serial.println("[i] Alive!");
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
   display.clearDisplay();
@@ -41,7 +42,9 @@ void setup(){
   bool spinner = false;
   display.setCursor(0,1);
   //Conectarme
+  
   while (WiFi.status() != WL_CONNECTED) {
+    Serial.println("loop");
     delay(500);
     display.clearDisplay();
     display.setCursor(0,1);
@@ -68,14 +71,15 @@ void setup(){
   //Conexion a cliente
   WiFiClientSecure client;
   const int httpsPort = 443;  
-  const char* host = "https://jsonplaceholder.typicode.com"; //"catfact.ninja";
+  const char* host = "catfact.ninja";
   if (!client.connect(host,httpsPort)) {
     Serial.println("connection failed");
     return;
   }
   //Fabricamos la URL
   Serial.print("URL: ");
-  String url = "/todos/1";  //"/fact";
+  String url = "/fact?max_length=60";
+  //url = "/fact?max_length=25";
   Serial.println(url);
   String request = String("GET ") + url + " HTTP/1.1\r\n" +
                "Host: " + host + "\r\n" + 
@@ -92,12 +96,6 @@ void setup(){
       return;
     }
   }
-  /*if (strcmp(client.status, "HTTP/1.1 200 OK") != 0) {
-    Serial.print(F("Unexpected response: "));
-    Serial.println(status);
-    return;
-  }*/
-  Serial.println(client.status());
   String ans; //Lineas
   String json; //Respuesta final
   // Read all the lines of the reply from server and print them to Serial
@@ -114,6 +112,9 @@ void setup(){
     }
     Serial.print(ans);
   }
+  
+  Serial.print("STATUS = ");
+  Serial.println(client.status());
   client.stop();
   Serial.println(json.indexOf('{'));
   String response = json.substring(json.indexOf("{"));
