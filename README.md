@@ -18,10 +18,11 @@ MOD 1 => Inicio - IOT - sockets
 		Descripcion
 		Aparatos
 		Protocolos
-		why iot
+		Porque aprender del IoT
 		Fabricantes involucrados con el IoT
 	ESP8266
 		Intro
+		Arduino AVR vs ESP
 		capacidades
 		specs electricas
 			3.3v
@@ -33,7 +34,26 @@ MOD 1 => Inicio - IOT - sockets
 		SDK vs Arduino
 		OLED
 			EJ Dibuja en la OLED
-			Fallas comunes en l ESP
+			Fallas comunes en el ESP
+	La internet
+		Estructura
+		IP protocol
+			EJ ping en PC
+			EJ tracert en PC
+			EJ ipconfig/ifconfig/iwconfig
+		HTTP
+			Intro a HTTP
+		API
+			JSON
+			EJ Cosumo basico de una API
+		Protoclos de la internet
+			TCP
+			UDP
+	Energy management
+		Sleeps
+		EJ deep sleep
+		ventajas
+MOD 2 => sockets v2 - HTTP - HTML - HTTP Server
 	Wifi
 		Arquitectura del Wifi
 		Modelo de redes
@@ -48,31 +68,17 @@ MOD 1 => Inicio - IOT - sockets
 		API wifi
 			Funciones
 			Handlers
-	EJ Socket a python: Hello socket
+	Más API
+		REST
+		EJ Twitter api thingspeak
+	Socket
+		EJ Socket a python: Hello socket
 	EJ NTP (directo?)
 	EJ ESP8266 a ESP8266
-	Energy management
-		Sleeps
-		EJ deep sleep
-		ventajas
-MOD 2 => sockes v2 - HTTP - HTML - HTTP Server
-	La internet
-		Estructura
-		IP protocol
-			EJ ping en PC
-			EJ tracert en PC
-			EJ ipconfig/ifconfig/iwconfig 
-	Protoclos de la internet
-		TCP
-		UDP
 	OTA firmware
 		EJ cargar soft desde el PC
 		EJ carga directa via esptool.py
-	API
-	API REST
-		EJ enviar temperatura a adafruit
-	JSON
-	HTTP cliente
+	HTTP v2
 		GET
 		EJ google maps API rq
 		EJ API
@@ -84,6 +90,12 @@ MOD 3 => HTTP Server - SPIFFS - Protocolos
 			POST
 			GET
 		HTML
+			funciones de memoria
+				stdio
+					snprintf
+					memset
+					strncpy
+					strlen
 			Tags
 				head
 				body
@@ -93,10 +105,25 @@ MOD 3 => HTTP Server - SPIFFS - Protocolos
 			EJ sitio sencillo para led
 			CSS
 			EJ2 sitio sencillo con estilo
+			EJ3 snprintf
 			img
 			SD!
 	Ethernet
 	SD
+	
+	mDNS & LLMNR
+		EJ montar server
+	
+MOD 4 => Paquetes - MQTT - MESH - BLE (ESP32)
+	EJ NTP (directo?)
+	SPIFFS
+		Manejo de spiffs, datos
+	Sys functions
+	SDK
+	MQTT
+		EJ Conectarse a un server y ver otros aparatos
+		
+	Mesh
 	Data almacenada
 		Info
 			ESP.getFlashChipRealSize();
@@ -109,17 +136,6 @@ MOD 3 => HTTP Server - SPIFFS - Protocolos
 			Data handling
 			EJ Logger mensajes
 			Data en masa
-	mDNS & LLMNR
-		EJ montar server
-	
-MOD 4 => Paquetes - MQTT - MESH - BLE (ESP32)
-	EJ NTP (directo?)
-	EEPROM
-	Sys functions
-	SDK
-	MQTT
-		EJ conn server lunanet
-		
-	Mesh
-	WiFi vs BLE
-	Dispositivos con BLE
+    BLE
+		WiFi vs BLE
+		Dispositivos con BLE
