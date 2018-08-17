@@ -45,10 +45,10 @@ void loop(){
     }
   }
   Serial.println("[i] Choose network"); 
-  while(!Serial.available()) int k = 0;
+  while(!Serial.available()) yield();
   String ssid = Serial.readString();
   Serial.println("[i] Password");
-  while(!Serial.available()) int k = 0;
+  while(!Serial.available()) yield();
   String pass = Serial.readString();
   
   WiFi.begin(ssid.c_str(), pass.c_str());
