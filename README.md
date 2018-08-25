@@ -7,9 +7,9 @@ Taller proyecto-céntrico diseñado a nivel introductorio-medio para alumnos de 
 
 El codigo esta hecho en ingles!
 
-##Taller ESP - Topicos
+## Taller ESP - Topicos
 
-#Proyecto principal: Sensor de temperatura IoT
+# Proyecto principal: Sensor de temperatura IoT
 ```
 MOD 1 => Inicio - IOT - sockets
 	Incio
