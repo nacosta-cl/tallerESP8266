@@ -1,4 +1,4 @@
-# tallerESP8266
+# TallerESP8266
 Codigo y material diseñado para el taller del ESP8266
 
 Distribuido bajo licencia GPLv3: Leer implicancias (Especialmente atribuir autoria y compartir todo el codigo fuente)
@@ -7,9 +7,10 @@ Taller proyecto-céntrico diseñado a nivel introductorio-medio para alumnos de 
 
 El codigo esta hecho en ingles!
 
-Taller ESP - Topicos
+##Taller ESP - Topicos
 
-Proyecto principal: Sensor de temperatura IoT
+#Proyecto principal: Sensor de temperatura IoT
+```
 MOD 1 => Inicio - IOT - sockets
 	Incio
 		Requiere arduino
@@ -34,6 +35,7 @@ MOD 1 => Inicio - IOT - sockets
 		SDK vs Arduino
 		OLED
 			EJ Dibuja en la OLED
+			EJ Data y vcc en la OLED
 			Fallas comunes en el ESP
 	La internet
 		Estructura
@@ -53,7 +55,27 @@ MOD 1 => Inicio - IOT - sockets
 		Sleeps
 		EJ deep sleep
 		ventajas
-MOD 2 => sockets v2 - HTTP - HTML - HTTP Server
+MOD 2 => APIv2 - OTA - Wifi
+	
+	BME280
+		Que es
+		I2C
+		Como va
+	Más API
+		REST
+		HTTP v2
+		GET
+		EJ Telegram bot
+			Simple reply
+			Temperature reply
+			Humidity reply
+	Socket
+		EJ Socket a python: Hello socket
+	EJ NTP (directo?)
+	EJ ESP8266 a ESP8266
+	OTA firmware
+		EJ cargar soft desde el PC
+		EJ carga directa via esptool.py
 	Wifi
 		Arquitectura del Wifi
 		Modelo de redes
@@ -64,31 +86,13 @@ MOD 2 => sockets v2 - HTTP - HTML - HTTP Server
 		IP
 		EJ conectarse a una red y mostrar data DONE
 		EJ ipscan DONE
-		EJ yield()
 		API wifi
 			Funciones
 			Handlers
-	Más API
-		REST
-		EJ Twitter api thingspeak
-	Socket
-		EJ Socket a python: Hello socket
-	EJ NTP (directo?)
-	EJ ESP8266 a ESP8266
-	OTA firmware
-		EJ cargar soft desde el PC
-		EJ carga directa via esptool.py
-	HTTP v2
-		GET
-		EJ google maps API rq
-		EJ API
-MOD 3 => HTTP Server - SPIFFS - Protocolos
+MOD 3 => HTTP Server - HTML - CSS - JS - Protocolos
 	HTTP Server
 		URI
 		Rutas
-		Forms
-			POST
-			GET
 		HTML
 			funciones de memoria
 				stdio
@@ -102,19 +106,27 @@ MOD 3 => HTTP Server - SPIFFS - Protocolos
 				div
 				table
 			Send svg
-			EJ sitio sencillo para led
+			EJ sitio sencillo para mostrar datos
 			CSS
 			EJ2 sitio sencillo con estilo
-			EJ3 snprintf
 			img
-			SD!
+			JS
+		Forms
+			GET
+				EJ Pedir solo un datos
+			Post
+				Mandar data a la pantalla
 	Ethernet
 	SD
-	
 	mDNS & LLMNR
 		EJ montar server
 	
-MOD 4 => Paquetes - MQTT - MESH - BLE (ESP32)
+MOD 4 => Firebase - MQTT - MESH - BLE (ESP32)
+	Firebase
+		Que es
+		Uso de Firebase
+		Abriendo un servidor firebase
+		EJ Reportar data a firebase
 	EJ NTP (directo?)
 	SPIFFS
 		Manejo de spiffs, datos
@@ -122,7 +134,6 @@ MOD 4 => Paquetes - MQTT - MESH - BLE (ESP32)
 	SDK
 	MQTT
 		EJ Conectarse a un server y ver otros aparatos
-		
 	Mesh
 	Data almacenada
 		Info
@@ -139,3 +150,4 @@ MOD 4 => Paquetes - MQTT - MESH - BLE (ESP32)
     BLE
 		WiFi vs BLE
 		Dispositivos con BLE
+```
